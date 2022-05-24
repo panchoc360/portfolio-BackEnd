@@ -5,7 +5,11 @@
 package com.portafolio.BackEnd.controller;
 
 import com.portafolio.BackEnd.model.Persona;
+import com.portafolio.BackEnd.service.EducacionService;
+import com.portafolio.BackEnd.service.ExperienciaService;
 import com.portafolio.BackEnd.service.PersonaService;
+import com.portafolio.BackEnd.service.ProyectosService;
+import com.portafolio.BackEnd.service.SkillsService;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +27,18 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Francisco
  */
 @RestController
-public class PersonaController {
+public class Controller {
     
     @Autowired
     private PersonaService interPersona;
+    @Autowired
+    private EducacionService interEducacion;
+    @Autowired
+    private ExperienciaService interExperiencia;
+    @Autowired
+    private ProyectosService interProyectos;
+    @Autowired
+    private SkillsService interSkills;
     
     @GetMapping("/personas/traer")
     public List<Persona> getPersonas(){

@@ -4,36 +4,41 @@
  */
 package com.portafolio.BackEnd.service;
 
+import com.portafolio.BackEnd.model.Educacion;
+import com.portafolio.BackEnd.repository.EducacionRepository;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author Francisco
  */
+@Service
 public class EducacionService implements IEducacionService{
     
         
     @Autowired
-    private EducacionRepository persoRepository;
+    private EducacionRepository EduRepository;
     
     @Override
-    public List<Persona> getEducacion(){
-        List<Persona> listaPersonas = persoRepository.findAll();
-        return listaPersonas;
+    public List<Educacion> getEducacion(){
+        List<Educacion> listaEducacion = EduRepository.findAll();
+        return listaEducacion;
     }
     @Override
     public void saveEducacion (Educacion edu){
-        persoRepository.save(edu);
+        EduRepository.save(edu);
     }
     
     @Override
     public void deleteEducacion (Long id){
-        persoRepository.deleteById(id);
+        EduRepository.deleteById(id);
     }
     
     @Override
-    public Persona findEducacion (Long id){
-        Persona perso = persoRepository.findById(id).orElse(null);
-        return perso;
+    public Educacion findEducacion (Long id){
+        Educacion edu = EduRepository.findById(id).orElse(null);
+        return edu;
     }
 }

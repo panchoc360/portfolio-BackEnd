@@ -4,21 +4,19 @@
  */
 package com.portafolio.BackEnd.service;
 
-import com.portafolio.BackEnd.model.Educacion;
+import com.portafolio.BackEnd.model.Proyectos;
 import java.util.List;
 
 /**
  *
  * @author Francisco
  */
-public interface IEducacionService {
+public interface IProyectosService {
+        public List<Proyectos> getProyectos();
     
-    public List<Educacion> getEducacion();
+    public void saveProyectos (Proyectos proy);
     
-    public void saveEducacion (Educacion edu);
+    public void deleteProyectos (Long id);
     
-    public void deleteEducacion (Long id);
-    
-    public Educacion findEducacion (Long id);
+    public Proyectos findProyectos (Long id);
 }
-

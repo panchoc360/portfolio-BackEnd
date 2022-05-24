@@ -4,21 +4,22 @@
  */
 package com.portafolio.BackEnd.service;
 
-import com.portafolio.BackEnd.model.Educacion;
+import com.portafolio.BackEnd.model.Experiencia;
 import java.util.List;
 
 /**
  *
  * @author Francisco
  */
-public interface IEducacionService {
+public interface IExperienciaService {
     
-    public List<Educacion> getEducacion();
+        
+    public List<Experiencia> getExperiencia();
     
-    public void saveEducacion (Educacion edu);
+    public void saveExperiencia (Experiencia exp);
     
-    public void deleteEducacion (Long id);
+    public void deleteExperiencia (Long id);
     
-    public Educacion findEducacion (Long id);
+    public Experiencia findExperiencia (Long id);
 }
 

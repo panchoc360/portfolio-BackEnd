@@ -4,6 +4,8 @@
  */
 package com.portafolio.BackEnd.controller;
 
+import com.portafolio.BackEnd.model.Educacion;
+import com.portafolio.BackEnd.model.Experiencia;
 import com.portafolio.BackEnd.model.Persona;
 import com.portafolio.BackEnd.service.EducacionService;
 import com.portafolio.BackEnd.service.ExperienciaService;
@@ -40,40 +42,70 @@ public class Controller {
     @Autowired
     private SkillsService interSkills;
     
-    @GetMapping("/personas/traer")
+    @GetMapping("/persona/obtenerdatos")
     public List<Persona> getPersonas(){
         return interPersona.getPersonas();
     }
-        @GetMapping("/personas/traer/{id}")
-    public Persona getPersonasobjeto(@PathVariable Long id){
-        return interPersona.findPersona(id);
+
+    @PostMapping ("/crear/educacion")
+    public String crearEducacion(@RequestBody Educacion edu){
+        interEducacion.saveEducacion(edu);
+        return "La educacion fue creada exitosamente";
     }
     
-    @PostMapping ("/personas/crear")
-    public String createStudent(@RequestBody Persona perso){
-        interPersona.savePersona(perso);
-        return "La persona fue creada exitosamente";
+    @DeleteMapping ("/borrar/educacion/{id}")
+    public String deleteEducacion(@PathVariable Long id){
+        interEducacion.deleteEducacion(id);
+        return "La Educación fue eliminada exitosamente";
     }
     
-    @DeleteMapping ("/personas/borrar/{id}")
-    public String deletePersona(@PathVariable Long id){
-        interPersona.deletePersona(id);
-        return "La persona fue eliminada exitosamente";
-    }
-    
-    @PutMapping ("/personas/editar/{id}")
-    public Persona editPersona(@PathVariable Long id,
-            @RequestParam("nombre") String nuevoNombre,
-            @RequestParam("email") String nuevoEmail,
-            @RequestParam("telefono") String nuevoTelefono
+    @PutMapping ("/editar/educacion/{id}")
+    public Educacion editEducacion(@PathVariable Long id,
+            @RequestParam("nombreInstitucion") String nuevoNombre,
+            @RequestParam("titulo") String nuevoTitulo,
+            @RequestParam("inicio") int nuevoInicio,
+            @RequestParam("fin") int nuevoFin,
+            @RequestParam("urlImagen") String nuevaUrl
             ){
-        Persona perso = interPersona.findPersona(id);
-        perso.setNombre (nuevoNombre);
-        perso.setEmail(nuevoEmail);
-        perso.setTelefono(nuevoTelefono);
+        Educacion edu = interEducacion.findEducacion(id);
+        edu.setNombreInstitucion(nuevoNombre);
+        edu.setTitulo(nuevoTitulo);
+        edu.setInicio(nuevoInicio);
+        edu.setFin(nuevoFin);
+        edu.setUrlImagen(nuevaUrl);
         
-        interPersona.savePersona(perso);
-        return perso;
+        interEducacion.saveEducacion(edu);
+        return edu;
     }
     
+        @PostMapping ("/crear/experiencia")
+    public String crearExperiencia(@RequestBody Experiencia exp){
+        interExperiencia.saveExperiencia(exp);
+        return "La Experiencia fue creada exitosamente";
+    }
+    
+    @DeleteMapping ("/borrar/experiencia/{id}")
+    public String deleteExperiencia(@PathVariable Long id){
+        interExperiencia.deleteExperiencia(id);
+        return "La Experiencia fue eliminada exitosamente";
+    }
+    
+    @PutMapping ("/editar/experiencia/{id}")
+    public Experiencia editExperiencia(@PathVariable Long id,
+            @RequestParam("nombreLugar") String nuevoNombre,
+            @RequestParam("cargoOcupado") String nuevoCargo,
+            @RequestParam("inicio") int nuevoInicio,
+            @RequestParam("fin") int nuevoFin,
+            @RequestParam("descripcion") String nuevaDescripcion
+            ){
+        Experiencia exp = interExperiencia.findExperiencia(id);
+        exp.setNombreLugar(nuevoNombre);
+        exp.setCargoOcupado(nuevoCargo);
+        exp.setInicio(nuevoInicio);
+        exp.setFin(nuevoFin);
+        exp.setDescripcion(nuevaDescripcion);
+        
+        interExperiencia.saveExperiencia(exp);
+        return exp;
+    }
 }

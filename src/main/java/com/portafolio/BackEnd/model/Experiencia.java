@@ -4,6 +4,7 @@
  */
 package com.portafolio.BackEnd.model;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ import lombok.Setter;
 @Entity
 @Getter @Setter
 
-public class Experiencia {
+public class Experiencia  implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long idExperiencia;

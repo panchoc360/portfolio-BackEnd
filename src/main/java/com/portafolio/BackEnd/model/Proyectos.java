@@ -4,6 +4,7 @@
  */
 package com.portafolio.BackEnd.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import lombok.Setter;
  */
 @Entity
 @Getter @Setter
-public class Proyectos {
+public class Proyectos  implements Serializable{
         @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long idProyecto;

@@ -4,29 +4,29 @@
  */
 package com.portafolio.BackEnd.service;
 
-import com.portafolio.BackEnd.model.Proyectos;
-import com.portafolio.BackEnd.repository.ProyectosRepository;
+import com.portafolio.BackEnd.model.Proyecto;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.portafolio.BackEnd.repository.ProyectoRepository;
 
 /**
  *
  * @author Francisco
  */
 @Service
-public class ProyectosService implements IProyectosService{
+public class ProyectoService implements IProyectoService{
     
     @Autowired
-    private ProyectosRepository proyRepository;
+    private ProyectoRepository proyRepository;
     
     @Override
-    public List<Proyectos> getProyectos(){
-        List<Proyectos> listaPersonas = proyRepository.findAll();
+    public List<Proyecto> getProyectos(){
+        List<Proyecto> listaPersonas = proyRepository.findAll();
         return listaPersonas;
     }
     @Override
-    public void saveProyectos (Proyectos proy){
+    public void saveProyectos (Proyecto proy){
         proyRepository.save(proy);
     }
     
@@ -36,8 +36,8 @@ public class ProyectosService implements IProyectosService{
     }
     
     @Override
-    public Proyectos findProyectos (Long id){
-        Proyectos proy = proyRepository.findById(id).orElse(null);
+    public Proyecto findProyectos (Long id){
+        Proyecto proy = proyRepository.findById(id).orElse(null);
         return proy;
     }
 }

@@ -4,28 +4,28 @@
  */
 package com.portafolio.BackEnd.service;
 
-import com.portafolio.BackEnd.model.Skills;
-import com.portafolio.BackEnd.repository.SkillsRepository;
+import com.portafolio.BackEnd.model.Skill;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import com.portafolio.BackEnd.repository.SkillRepository;
 
 /**
  *
  * @author Francisco
  */
 @Service
-public class SkillsService implements ISkillsService{
+public class SkillService implements ISkillService{
     @Autowired
-    private SkillsRepository skillsRepository;
+    private SkillRepository skillsRepository;
     
     @Override
-    public List<Skills> getSkills(){
-        List<Skills> listaSkills = skillsRepository.findAll();
+    public List<Skill> getSkills(){
+        List<Skill> listaSkills = skillsRepository.findAll();
         return listaSkills;
     }
     @Override
-    public void saveSkills (Skills skill){
+    public void saveSkills (Skill skill){
         skillsRepository.save(skill);
     }
     
@@ -35,8 +35,8 @@ public class SkillsService implements ISkillsService{
     }
     
     @Override
-    public Skills findSkills (Long id){
-        Skills skill = skillsRepository.findById(id).orElse(null);
+    public Skill findSkills (Long id){
+        Skill skill = skillsRepository.findById(id).orElse(null);
         return skill;
     }
 }

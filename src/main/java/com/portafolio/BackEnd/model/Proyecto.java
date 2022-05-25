@@ -19,7 +19,7 @@ import lombok.Setter;
  */
 @Entity
 @Getter @Setter
-public class Proyectos  implements Serializable{
+public class Proyecto  implements Serializable{
         @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long idProyecto;
@@ -30,10 +30,10 @@ public class Proyectos  implements Serializable{
     private String url;
     private String urlImagen;
 
-    public Proyectos() {
+    public Proyecto() {
     }
 
-    public Proyectos(Long idProyecto, String Nombre, Date fecha, String descripcion, String url, String urlImagen) {
+    public Proyecto(Long idProyecto, String Nombre, Date fecha, String descripcion, String url, String urlImagen) {
         this.idProyecto = idProyecto;
         this.Nombre = Nombre;
         this.fecha = fecha;

@@ -4,19 +4,19 @@
  */
 package com.portafolio.BackEnd.service;
 
-import com.portafolio.BackEnd.model.Proyectos;
+import com.portafolio.BackEnd.model.Skill;
 import java.util.List;
 
 /**
  *
  * @author Francisco
  */
-public interface IProyectosService {
-        public List<Proyectos> getProyectos();
+public interface ISkillService {
+    public List<Skill> getSkills();
     
-    public void saveProyectos (Proyectos proy);
+    public void saveSkills (Skill perso);
     
-    public void deleteProyectos (Long id);
+    public void deleteSkills (Long id);
     
-    public Proyectos findProyectos (Long id);
+    public Skill findSkills (Long id);
 }

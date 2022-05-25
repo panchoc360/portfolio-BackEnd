@@ -28,7 +28,7 @@ public class Persona implements Serializable{
     private String email;
     private String telefono;
     private String acercade;
-    private String urlimagenPerfil;
+    private String urlImagenPerfil;
     private String urlImagenPortada;
     
     
@@ -38,7 +38,7 @@ public class Persona implements Serializable{
         this.email = email;
         this.telefono = telefono;
         this.acercade = acercade;
-        this.urlimagenPerfil = urlimagenPerfil;
+        this.urlImagenPerfil = urlimagenPerfil;
         this.urlImagenPortada = urlImagenPortada;
     }
     

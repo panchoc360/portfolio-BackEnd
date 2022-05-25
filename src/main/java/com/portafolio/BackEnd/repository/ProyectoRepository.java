@@ -4,7 +4,7 @@
  */
 package com.portafolio.BackEnd.repository;
 
-import com.portafolio.BackEnd.model.Proyectos;
+import com.portafolio.BackEnd.model.Proyecto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author Francisco
  */
 @Repository
-public interface ProyectosRepository extends JpaRepository <Proyectos, Long>{
+public interface ProyectoRepository extends JpaRepository <Proyecto, Long>{
     
 }

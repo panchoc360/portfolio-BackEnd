@@ -18,7 +18,7 @@ import lombok.Setter;
  */
 @Entity
 @Getter @Setter
-public class Skills  implements Serializable{
+public class Skill  implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long idSkill;
@@ -26,10 +26,10 @@ public class Skills  implements Serializable{
     private String skill;
     private int nivel;
 
-    public Skills() {
+    public Skill() {
     }
 
-    public Skills(Long idSkill, String skill, int nivel) {
+    public Skill(Long idSkill, String skill, int nivel) {
         this.idSkill = idSkill;
         this.skill = skill;
         this.nivel = nivel;

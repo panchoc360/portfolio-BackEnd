@@ -4,7 +4,7 @@
  */
 package com.portafolio.BackEnd.repository;
 
-import com.portafolio.BackEnd.model.Skills;
+import com.portafolio.BackEnd.model.Skill;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
  * @author Francisco
  */
 @Repository
-public interface SkillsRepository extends JpaRepository <Skills, Long>{
+public interface SkillRepository extends JpaRepository <Skill, Long>{
     
 }

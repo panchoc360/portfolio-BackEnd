@@ -15,6 +15,7 @@ import com.portafolio.BackEnd.service.ExperienciaService;
 import com.portafolio.BackEnd.service.PersonaService;
 import com.portafolio.BackEnd.service.ProyectoService;
 import com.portafolio.BackEnd.service.SkillService;
+import java.util.Date;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,7 @@ public class Controller {
     }
     
     
-    
+
     @GetMapping("/obtener/persona")
     public List<Persona> getPersonas(){
         return interPersona.getPersonas();
@@ -69,6 +70,24 @@ public class Controller {
         return "La persona fue creada exitosamente";
     }
     
+    @PutMapping ("/editar/persona/{id}")
+    public Persona editPersona(@PathVariable Long id,
+            @RequestParam("email") String nuevoEmail,
+            @RequestParam("telefono") String nuevoTelefono,
+            @RequestParam("acercade") String nuevoAcercaDe,
+            @RequestParam("urlimagenPerfil") String nuevaUrlPerfil,
+            @RequestParam("urlImagenPortada") String nuevaUrlPortada){
+        Persona per = interPersona.findPersona(id);
+        per.setNombre(nuevoNombre);
+        per.setEmail(nuevoEmail);
+        per.setTelefono(nuevoTelefono);
+        per.setAcercade(nuevoAcercaDe);
+        per.setUrlImagenPerfil(nuevaUrlPerfil);
+        per.setUrlImagenPortada(nuevaUrlPortada);
+        
+        interPersona.savePersona(per);
+        return per;
+    }
     
     
     @GetMapping("/obtener/educacion")
@@ -124,7 +143,24 @@ public class Controller {
         return "La Experiencia fue eliminada exitosamente";
     }
     
-    
+        @PutMapping ("/editar/experiencia/{id}")
+    public Experiencia editExperiencia(@PathVariable Long id,
+            @RequestParam("nombreLugar") String nuevoNombre,
+            @RequestParam("cargoOcupado") String nuevoCargo,
+            @RequestParam("inicio") int nuevoInicio,
+            @RequestParam("fin") int nuevoFin,
+            @RequestParam("descripcion") String nuevaDescripcion
+            ){
+        Experiencia exp = interExperiencia.findExperiencia(id);
+        exp.setNombreLugar(nuevoNombre);
+        exp.setCargoOcupado(nuevoCargo);
+        exp.setInicio(nuevoInicio);
+        exp.setFin(nuevoFin);
+        exp.setDescripcion(nuevaDescripcion);
+        
+        interExperiencia.saveExperiencia(exp);
+        return exp;
+    }
     
     
         @GetMapping("/obtener/proyecto")
@@ -143,7 +179,24 @@ public class Controller {
         return "El proyecto fue eliminado exitosamente";
     }
     
-    
+    @PutMapping ("/editar/proyecto/{id}")
+    public Proyecto editProyecto(@PathVariable Long id,
+            @RequestParam("nombre") String nuevoNombre,
+            @RequestParam("fecha") Date nuevaFecha,
+            @RequestParam("descripcion") String nuevaDescripcion,
+            @RequestParam("url") String nuevaURL,
+            @RequestParam("urlImagen") String nuevaUrlImagen
+            ){
+        Proyecto proy = interProyectos.findProyectos(id);
+        proy.setNombre(nuevoNombre);
+        proy.setFecha(nuevaFecha);
+        proy.setDescripcion(nuevaDescripcion);
+        proy.setUrl(nuevaURL);
+        proy.setUrlImagen(nuevaUrlImagen);
+        
+        interExperiencia.saveExperiencia(proy);
+        return proy;
+    }
     
     
         @GetMapping("/obtener/skill")
@@ -162,22 +215,17 @@ public class Controller {
         return "La habilidad fue eliminada exitosamente";
     }
     
-    @PutMapping ("/editar/experiencia/{id}")
-    public Experiencia editExperiencia(@PathVariable Long id,
-            @RequestParam("nombreLugar") String nuevoNombre,
-            @RequestParam("cargoOcupado") String nuevoCargo,
-            @RequestParam("inicio") int nuevoInicio,
-            @RequestParam("fin") int nuevoFin,
-            @RequestParam("descripcion") String nuevaDescripcion
+    @PutMapping ("/editar/skill/{id}")
+    public Skill editSkill(@PathVariable Long id,
+            @RequestParam("skill") String skills,
+            @RequestParam("nivel") int nivel
             ){
-        Experiencia exp = interExperiencia.findExperiencia(id);
-        exp.setNombreLugar(nuevoNombre);
-        exp.setCargoOcupado(nuevoCargo);
-        exp.setInicio(nuevoInicio);
-        exp.setFin(nuevoFin);
-        exp.setDescripcion(nuevaDescripcion);
+        Skill skill = interSkills.findSkills(id);
+        skill.setSkill(skills);
+        skill.setNivel(nivel);
+
         
-        interExperiencia.saveExperiencia(exp);
-        return exp;
+        interSkills.saveSkills(skill);
+        return skill;
     }
 }

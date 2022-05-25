@@ -72,6 +72,7 @@ public class Controller {
     
     @PutMapping ("/editar/persona/{id}")
     public Persona editPersona(@PathVariable Long id,
+            @RequestParam("nombre") String nuevoNombre,
             @RequestParam("email") String nuevoEmail,
             @RequestParam("telefono") String nuevoTelefono,
             @RequestParam("acercade") String nuevoAcercaDe,
@@ -194,7 +195,7 @@ public class Controller {
         proy.setUrl(nuevaURL);
         proy.setUrlImagen(nuevaUrlImagen);
         
-        interExperiencia.saveExperiencia(proy);
+        interProyectos.saveProyectos(proy);
         return proy;
     }
     

@@ -5,12 +5,14 @@
 package com.portafolio.BackEnd.model;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 /**
  *
@@ -18,7 +20,7 @@ import lombok.Setter;
  */
 @Entity
 @Getter @Setter
-
+@DynamicUpdate
 public class Experiencia  implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -29,18 +31,25 @@ public class Experiencia  implements Serializable{
     private int inicio;
     private int fin;
     private String descripcion;
+    @Column(name = "urlLogo")
+    private String urlLogo;
+    private String urlWebPage;
 
     public Experiencia() {
     }
 
-    public Experiencia(Long idExperiencia, String nombreLugar, String cargoOcupado, int inicio, int fin, String descripcion) {
+    public Experiencia(Long idExperiencia, String nombreLugar, String cargoOcupado, int inicio, int fin, String descripcion, String urlLogo, String urlWebPage) {
         this.idExperiencia = idExperiencia;
         this.nombreLugar = nombreLugar;
         this.cargoOcupado = cargoOcupado;
         this.inicio = inicio;
         this.fin = fin;
         this.descripcion = descripcion;
+        this.urlLogo = urlLogo;
+        this.urlWebPage = urlWebPage;
     }
+
+
     
     
 }

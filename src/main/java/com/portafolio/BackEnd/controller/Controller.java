@@ -15,7 +15,6 @@ import com.portafolio.BackEnd.service.ExperienciaService;
 import com.portafolio.BackEnd.service.PersonaService;
 import com.portafolio.BackEnd.service.ProyectoService;
 import com.portafolio.BackEnd.service.SkillService;
-import java.util.Date;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,7 +149,9 @@ public class Controller {
             @RequestParam("cargoOcupado") String nuevoCargo,
             @RequestParam("inicio") int nuevoInicio,
             @RequestParam("fin") int nuevoFin,
-            @RequestParam("descripcion") String nuevaDescripcion
+            @RequestParam("descripcion") String nuevaDescripcion,
+            @RequestParam("urlLogo") String urlLogo,
+            @RequestParam("urlWebPage") String urlWebPage
             ){
         Experiencia exp = interExperiencia.findExperiencia(id);
         exp.setNombreLugar(nuevoNombre);
@@ -158,6 +159,8 @@ public class Controller {
         exp.setInicio(nuevoInicio);
         exp.setFin(nuevoFin);
         exp.setDescripcion(nuevaDescripcion);
+        exp.setUrlLogo(urlLogo);
+        exp.setUrlWebPage(urlWebPage);
         
         interExperiencia.saveExperiencia(exp);
         return exp;
@@ -183,7 +186,7 @@ public class Controller {
     @PutMapping ("/editar/proyecto/{id}")
     public Proyecto editProyecto(@PathVariable Long id,
             @RequestParam("nombre") String nuevoNombre,
-            @RequestParam("fecha") Date nuevaFecha,
+            @RequestParam("fecha") int nuevaFecha,
             @RequestParam("descripcion") String nuevaDescripcion,
             @RequestParam("url") String nuevaURL,
             @RequestParam("urlImagen") String nuevaUrlImagen

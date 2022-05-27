@@ -25,7 +25,7 @@ public class Proyecto  implements Serializable{
     private Long idProyecto;
     
     private String Nombre;
-    private Date fecha;
+    private int fecha;
     private String descripcion;
     private String url;
     private String urlImagen;
@@ -33,7 +33,7 @@ public class Proyecto  implements Serializable{
     public Proyecto() {
     }
 
-    public Proyecto(Long idProyecto, String Nombre, Date fecha, String descripcion, String url, String urlImagen) {
+    public Proyecto(Long idProyecto, String Nombre, int fecha, String descripcion, String url, String urlImagen) {
         this.idProyecto = idProyecto;
         this.Nombre = Nombre;
         this.fecha = fecha;

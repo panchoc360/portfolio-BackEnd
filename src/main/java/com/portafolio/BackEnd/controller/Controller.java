@@ -44,7 +44,7 @@ public class Controller {
     private ProyectoService interProyectos;
     @Autowired
     private SkillService interSkills;
-    
+
     
     @GetMapping("/obtener/portfolio")
     public PortfolioDTO getPortfolio(){
@@ -55,7 +55,7 @@ public class Controller {
                 interProyectos.getProyectos(),
                 interSkills.getSkills());
     }
-    
+   
     
 
     @GetMapping("/obtener/persona")

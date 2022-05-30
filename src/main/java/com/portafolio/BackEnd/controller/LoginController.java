@@ -21,6 +21,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 
 /**
@@ -28,7 +29,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
  * @author Francisco
  */
 
-@RestController
+@RestController@CrossOrigin(origins = {"http://localhost:4200/", "https://portfolio-frontend-c8e8e.web.app/"})
 public class LoginController {
     
     @Autowired

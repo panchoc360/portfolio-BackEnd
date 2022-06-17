@@ -26,6 +26,11 @@ public class PersonaService implements IPersonaService{
         return listaPersonas;
     }
     @Override
+    public Persona getPrimerPersona(){
+        List<Persona> listaPersonas = persoRepository.findAll();
+        return listaPersonas.get(0);
+    }
+    @Override
     public void savePersona (Persona perso){
         persoRepository.save(perso);
     }

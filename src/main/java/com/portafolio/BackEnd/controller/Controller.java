@@ -51,7 +51,7 @@ public class Controller {
     @GetMapping("/obtener/portfolio")
     public PortfolioDTO getPortfolio(){
         
-        return new PortfolioDTO(interPersona.getPersonas(),
+        return new PortfolioDTO(interPersona.getPrimerPersona(),
                 interEducacion.getEducacion(),
                 interExperiencia.getExperiencia(),
                 interProyectos.getProyectos(),

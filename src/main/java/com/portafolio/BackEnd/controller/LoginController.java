@@ -9,7 +9,6 @@ import com.portafolio.BackEnd.service.UsuarioService;
 import java.util.Date;
 
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.jsonwebtoken.Jwts;
@@ -22,6 +21,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 /**
@@ -29,21 +29,24 @@ import org.springframework.web.bind.annotation.CrossOrigin;
  * @author Francisco
  */
 
-@RestController@CrossOrigin(origins = {"http://localhost:4200/", "https://portfolio-frontend-c8e8e.web.app/"})
+@RestController
+@CrossOrigin
+//@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST}, preflightContinue: false)
+//@CrossOrigin(origins = {"http://localhost:4200", "https://portfolio-frontend-c8e8e.web.app/"})
 public class LoginController {
     
     @Autowired
     private UsuarioService interUsuario;
             
-    @PostMapping("iniciarsesion")
-	public ResponseEntity<Usuario> login(@RequestParam("email") String email, @RequestParam("password") String pwd) {
-		Usuario usuario = interUsuario.findById(email);
+    @PostMapping("/iniciarsesion")
+    	public ResponseEntity<Usuario> login(@RequestBody Usuario edu) {
+		Usuario usuario = interUsuario.findById(edu.getEmail());
                 
-                if (usuario != null && (usuario.getContra() == null ? pwd == null : usuario.getContra().equals(pwd)))
+                if (usuario != null && (usuario.getContra() == null ? edu.getContra() == null : usuario.getContra().equals(edu.getContra())))
                         {
-		String token = getJWTToken(email);
+		String token = getJWTToken(edu.getEmail());
 		Usuario user = new Usuario();
-		user.setEmail(email);
+		user.setEmail(edu.getEmail());
 		user.setToken(token);		
 		return new ResponseEntity(user, HttpStatus.OK);
                         }
@@ -51,7 +54,8 @@ public class LoginController {
                     return new ResponseEntity("Email o contraseña incorrectas", HttpStatus.UNAUTHORIZED);
                      
 	}
-
+        
+        
 	private String getJWTToken(String email) {
 		String secretKey = "WebFullStack";
 		List<GrantedAuthority> grantedAuthorities = AuthorityUtils

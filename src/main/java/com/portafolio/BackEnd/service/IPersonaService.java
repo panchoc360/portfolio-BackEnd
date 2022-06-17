@@ -14,6 +14,8 @@ import java.util.List;
 public interface IPersonaService {
     public List<Persona> getPersonas();
     
+    public Persona getPrimerPersona();
+    
     public void savePersona (Persona perso);
     
     public void deletePersona (Long id);

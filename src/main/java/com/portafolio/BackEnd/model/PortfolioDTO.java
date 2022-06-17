@@ -17,13 +17,13 @@ import lombok.Setter;
 public class PortfolioDTO implements Serializable{
     
 
-    private List<Persona> persona;
+    private Persona persona;
     private List<Educacion> educacion;
     private List<Experiencia> experiencia;
     private List<Proyecto> proyecto;
     private List<Skill> skill;
 
-    public PortfolioDTO(List<Persona> per, List<Educacion> edu, List<Experiencia> exp, List<Proyecto> pry, List<Skill> skl) {
+    public PortfolioDTO(Persona per, List<Educacion> edu, List<Experiencia> exp, List<Proyecto> pry, List<Skill> skl) {
         this.persona = per;
         this.educacion = edu;
         this.experiencia = exp;

@@ -71,26 +71,11 @@ public class Controller {
         return "La persona fue creada exitosamente";
     }
     
-    @PutMapping ("/editar/persona/{id}")
-    public Persona editPersona(@PathVariable Long id,
-            @RequestParam("nombre") String nuevoNombre,
-            @RequestParam("email") String nuevoEmail,
-            @RequestParam("telefono") String nuevoTelefono,
-            @RequestParam("acercade") String nuevoAcercaDe,
-            @RequestParam("urlimagenPerfil") String nuevaUrlPerfil,
-            @RequestParam("urlImagenPortada") String nuevaUrlPortada){
-        Persona per = interPersona.findPersona(id);
-        per.setNombre(nuevoNombre);
-        per.setEmail(nuevoEmail);
-        per.setTelefono(nuevoTelefono);
-        per.setAcercade(nuevoAcercaDe);
-        per.setUrlImagenPerfil(nuevaUrlPerfil);
-        per.setUrlImagenPortada(nuevaUrlPortada);
-        
-        interPersona.savePersona(per);
+    @PutMapping ("/editar/persona/")
+    public Persona edit2persona(@RequestBody Persona per){
+                interPersona.savePersona(per);
         return per;
     }
-    
     
     @GetMapping("/obtener/educacion")
     public List<Educacion> getEducacion(){
@@ -108,32 +93,18 @@ public class Controller {
         return "La Educación fue eliminada exitosamente";
     }
     
-    @PutMapping ("/editar/educacion/{id}")
-    public Educacion editEducacion(@PathVariable Long id,
-            @RequestParam("nombreInstitucion") String nuevoNombre,
-            @RequestParam("titulo") String nuevoTitulo,
-            @RequestParam("inicio") int nuevoInicio,
-            @RequestParam("fin") int nuevoFin,
-            @RequestParam("urlImagen") String nuevaUrl
-            ){
-        Educacion edu = interEducacion.findEducacion(id);
-        edu.setNombreInstitucion(nuevoNombre);
-        edu.setTitulo(nuevoTitulo);
-        edu.setInicio(nuevoInicio);
-        edu.setFin(nuevoFin);
-        edu.setUrlImagen(nuevaUrl);
-        
+        @PutMapping ("/editar/educacion/")
+    public Educacion editEducacion(@RequestBody Educacion edu){
         interEducacion.saveEducacion(edu);
         return edu;
     }
-    
     
     
         @GetMapping("/obtener/experiencia")
     public List<Experiencia> getExperiencia(){
         return interExperiencia.getExperiencia();
     }
-        @PostMapping ("/crear/experiencia")
+        @PostMapping ("/crear/experiencia/")
     public String crearExperiencia(@RequestBody Experiencia exp){
         interExperiencia.saveExperiencia(exp);
         return "La Experiencia fue creada exitosamente";
@@ -145,25 +116,8 @@ public class Controller {
         return "La Experiencia fue eliminada exitosamente";
     }
     
-        @PutMapping ("/editar/experiencia/{id}")
-    public Experiencia editExperiencia(@PathVariable Long id,
-            @RequestParam("nombreLugar") String nuevoNombre,
-            @RequestParam("cargoOcupado") String nuevoCargo,
-            @RequestParam("inicio") int nuevoInicio,
-            @RequestParam("fin") int nuevoFin,
-            @RequestParam("descripcion") String nuevaDescripcion,
-            @RequestParam("urlLogo") String urlLogo,
-            @RequestParam("urlWebPage") String urlWebPage
-            ){
-        Experiencia exp = interExperiencia.findExperiencia(id);
-        exp.setNombreLugar(nuevoNombre);
-        exp.setCargoOcupado(nuevoCargo);
-        exp.setInicio(nuevoInicio);
-        exp.setFin(nuevoFin);
-        exp.setDescripcion(nuevaDescripcion);
-        exp.setUrlLogo(urlLogo);
-        exp.setUrlWebPage(urlWebPage);
-        
+        @PutMapping ("/editar/experiencia/")
+    public Experiencia editExperiencia(@RequestBody Experiencia exp){
         interExperiencia.saveExperiencia(exp);
         return exp;
     }
@@ -185,21 +139,8 @@ public class Controller {
         return "El proyecto fue eliminado exitosamente";
     }
     
-    @PutMapping ("/editar/proyecto/{id}")
-    public Proyecto editProyecto(@PathVariable Long id,
-            @RequestParam("nombre") String nuevoNombre,
-            @RequestParam("fecha") int nuevaFecha,
-            @RequestParam("descripcion") String nuevaDescripcion,
-            @RequestParam("url") String nuevaURL,
-            @RequestParam("urlImagen") String nuevaUrlImagen
-            ){
-        Proyecto proy = interProyectos.findProyectos(id);
-        proy.setNombre(nuevoNombre);
-        proy.setFecha(nuevaFecha);
-        proy.setDescripcion(nuevaDescripcion);
-        proy.setUrl(nuevaURL);
-        proy.setUrlImagen(nuevaUrlImagen);
-        
+    @PutMapping ("/editar/proyecto/")
+    public Proyecto editProyecto(@RequestBody Proyecto proy){
         interProyectos.saveProyectos(proy);
         return proy;
     }
@@ -221,16 +162,8 @@ public class Controller {
         return "La habilidad fue eliminada exitosamente";
     }
     
-    @PutMapping ("/editar/skill/{id}")
-    public Skill editSkill(@PathVariable Long id,
-            @RequestParam("skill") String skills,
-            @RequestParam("nivel") int nivel
-            ){
-        Skill skill = interSkills.findSkills(id);
-        skill.setSkill(skills);
-        skill.setNivel(nivel);
-
-        
+    @PutMapping ("/editar/skill/")
+    public Skill editSkill(@RequestBody Skill skill){
         interSkills.saveSkills(skill);
         return skill;
     }

@@ -41,6 +41,7 @@ public class LoginController {
     @PostMapping("/iniciarsesion")
     	public ResponseEntity<Usuario> login(@RequestBody Usuario edu) {
 		Usuario usuario = interUsuario.findById(edu.getEmail());
+                //if (true)
                 
                 if (usuario != null && (usuario.getContra() == null ? edu.getContra() == null : usuario.getContra().equals(edu.getContra())))
                         {

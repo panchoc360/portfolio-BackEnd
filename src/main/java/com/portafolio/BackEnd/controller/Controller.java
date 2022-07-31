@@ -25,7 +25,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -82,15 +81,15 @@ public class Controller {
         return interEducacion.getEducacion();
     }
     @PostMapping ("/crear/educacion")
-    public String crearEducacion(@RequestBody Educacion edu){
+    public Educacion crearEducacion(@RequestBody Educacion edu){
         interEducacion.saveEducacion(edu);
-        return "La educacion fue creada exitosamente";
+        return edu;
     }
     
     @DeleteMapping ("/borrar/educacion/{id}")
-    public String deleteEducacion(@PathVariable Long id){
+    public List<Educacion> deleteEducacion(@PathVariable Long id){
         interEducacion.deleteEducacion(id);
-        return "La Educación fue eliminada exitosamente";
+        return interEducacion.getEducacion();
     }
     
         @PutMapping ("/editar/educacion/")
@@ -105,15 +104,15 @@ public class Controller {
         return interExperiencia.getExperiencia();
     }
         @PostMapping ("/crear/experiencia/")
-    public String crearExperiencia(@RequestBody Experiencia exp){
+    public Experiencia crearExperiencia(@RequestBody Experiencia exp){
         interExperiencia.saveExperiencia(exp);
-        return "La Experiencia fue creada exitosamente";
+        return exp;
     }
     
     @DeleteMapping ("/borrar/experiencia/{id}")
-    public String deleteExperiencia(@PathVariable Long id){
+    public List<Experiencia> deleteExperiencia(@PathVariable Long id){
         interExperiencia.deleteExperiencia(id);
-        return "La Experiencia fue eliminada exitosamente";
+        return interExperiencia.getExperiencia() ;
     }
     
         @PutMapping ("/editar/experiencia/")
@@ -128,15 +127,15 @@ public class Controller {
         return interProyectos.getProyectos();
     }
     @PostMapping ("/crear/proyecto")
-    public String crearProyectos(@RequestBody Proyecto proy){
+    public Proyecto crearProyectos(@RequestBody Proyecto proy){
         interProyectos.saveProyectos(proy);
-        return "El proyecto fue creado exitosamente";
+        return proy;
     }
     
     @DeleteMapping ("/borrar/proyecto/{id}")
-    public String deleteProyectos(@PathVariable Long id){
+    public List<Proyecto> deleteProyectos(@PathVariable Long id){
         interProyectos.deleteProyectos(id);
-        return "El proyecto fue eliminado exitosamente";
+        return interProyectos.getProyectos() ;
     }
     
     @PutMapping ("/editar/proyecto/")
@@ -151,15 +150,15 @@ public class Controller {
         return interSkills.getSkills();
     }
     @PostMapping ("/crear/skill")
-    public String crearSkills(@RequestBody Skill skl){
+    public Skill crearSkills(@RequestBody Skill skl){
         interSkills.saveSkills(skl);
-        return "La habilidad fue creada exitosamente";
+        return skl;
     }
     
     @DeleteMapping ("/borrar/skill/{id}")
-    public String deleteSkills(@PathVariable Long id){
+    public List<Skill> deleteSkills(@PathVariable Long id){
         interSkills.deleteSkills(id);
-        return "La habilidad fue eliminada exitosamente";
+        return interSkills.getSkills();
     }
     
     @PutMapping ("/editar/skill/")
